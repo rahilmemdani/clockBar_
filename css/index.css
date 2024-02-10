@@ -1,0 +1,472 @@
+/* default css start */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.header-area {
+  background: transparent;
+  background-position: center center;
+  background-size: cover;
+}
+/* default css end */
+
+/* navbar regular css start */
+.navbar-area {
+  background: white;
+  z-index: 9999;
+  border-bottom: 1px solid #000;
+  position: relative;
+  font-size: 15px;
+}
+.site-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+a.site-logo {
+  font-size: 26px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: black;
+  /* text-decoration: none; */
+}
+.site-navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+.site-navbar ul li a {
+  color: black;
+  padding: 20px;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.site-navbar ul li a:hover {
+  background: rgba(255, 255, 255, 0);
+}
+/* navbar regular css end */
+
+/* nav-toggler css start */
+.nav-toggler {
+  border: 3px solid black;
+  padding: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  height: 39px;
+  display: none;
+}
+.nav-toggler span,
+.nav-toggler span:before,
+.nav-toggler span:after {
+  width: 28px;
+  height: 3px;
+  background-color: black;
+  display: block;
+  transition: 0.3s;
+}
+.nav-toggler span:before {
+  content: "";
+  transform: translateY(-9px);
+}
+.nav-toggler span:after {
+  content: "";
+  transform: translateY(6px);
+}
+.nav-toggler.toggler-open span {
+  background-color: transparent;
+}
+.nav-toggler.toggler-open span:before {
+  transform: translateY(0px) rotate(45deg);
+}
+.nav-toggler.toggler-open span:after {
+  transform: translateY(-3px) rotate(-45deg);
+}
+/* nav-toggler css start */
+
+/* intro-area css start */
+.intro-area {
+  height: calc(100vh - 61px);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+.intro-area h2 {
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 50px;
+  margin-bottom: 25px;
+}
+.intro-area p {
+  font-size: 18px;
+}
+
+.img_logo{
+  width: 90px;
+}
+/* intro-area css end */
+
+/* mobile breakpoint start */
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 720px;
+  }
+  /* navbar css for mobile start */
+  .nav-toggler {
+    display: block;
+  }
+  .site-navbar {
+    min-height: 60px;
+  }
+  .site-navbar ul {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 60px);
+    left: 0;
+    top: 60px;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #444;
+    background-color: rgba(0, 0, 0, 0.75);
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+  .site-navbar ul li {
+    width: 100%;
+    text-align: center;
+  }
+  .site-navbar ul li a {
+    padding: 25px;
+  }
+  .site-navbar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .site-navbar ul.open {
+    max-height: 100vh;
+    overflow: visible;
+  }
+  .intro-area h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+  .img_logo{
+    width: 80px;
+  }
+  .site-navbar ul li a {
+    color: white;
+    padding: 20px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  /* navbar css for mobile end */
+}
+/* mobile breakpoint end */
+
+
+
+/* SLIDER */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap");
+
+/* -----Reset----- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* -----Common----- */
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+/* -----Slider----- */
+.slider {
+  width: 100%;
+  height: 100%;
+}
+
+.slider .slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* overflow: hidden; */
+}
+
+/* Slide */
+.slider .slides .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  display: flex;
+  transition: all 0.5s ease-in;
+}
+
+.slider .slides .curr {
+  opacity: 1;
+}
+
+/* Overlay */
+.slider .slides .slide::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+/* Images */
+.slides .slide img {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  transform: scale(0.8);
+  transition: all 0.5s ease-in;
+}
+
+.slides .curr img {
+  transform: scale(1);
+}
+
+/* Description */
+.slides .slide .desc {
+  position: absolute;
+  max-width: 700px;
+  min-width: 550px;
+  top: -50%;
+  left: 150px;
+  transform: translateY(50%);
+  z-index: 2;
+  padding: 25px;
+  transition: all 0.5s ease-in;
+}
+
+.slides .curr .desc {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slide .desc h2 {
+  font-size: 5rem;
+  color: #fff;
+  line-height: 5rem;
+}
+
+.slide .desc p {
+  font-size: 1rem;
+  margin: 25px 0px;
+  color: #fff;
+  line-height: 1.2rem;
+}
+
+.slide .desc a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #e7af15;
+  padding: 20px 50px;
+  transition: all 0.3s ease-in;
+}
+
+.slide .desc a:hover {
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+}
+
+/* -----Navigation Arrows----- */
+.slider .arrow {
+  position: absolute;
+  text-decoration: none;
+  z-index: 20;
+  color: #fff;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  transition: all 0.3s ease-in;
+}
+
+.slider .arrow:hover {
+  opacity: 1;
+}
+
+.slider .arrow i {
+  font-size: 3rem;
+}
+
+.slider .left {
+  left: 70px;
+}
+
+.slider .right {
+  right: 70px;
+}
+
+/* -----Radio Navigation----- */
+.slider .rad-nav {
+  width: 100%;
+  position: fixed;
+  bottom: 20px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider .rad-nav .rad-btn {
+  width: 25px;
+  height: 25px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  margin: 0px 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.slider .rad-nav .rad-btn:hover {
+  background-color: #fff;
+  border-radius: 30%;
+}
+
+.active {
+  background-color: #fff;
+}
+
+/* -----Responsive----- */
+@media (max-width: 1100px) {
+  /* Slide Description */
+  .slides .slide .desc {
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .slides .curr .desc {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 800px) {
+  /* Slide Description */
+  .slides .slide .desc {
+    width: 70%;
+    min-width: 200px;
+  }
+
+  .slide .desc h2 {
+    font-size: 2.5rem;
+    line-height: 2.8rem;
+  }
+
+  .slide .desc p {
+    font-size: 0.8rem;
+    margin: 10px 0px;
+  }
+
+  .slide .desc a {
+    font-size: 0.8rem;
+    padding: 10px 30px;
+  }
+
+  /* Navigation Arrows */
+  .slider .arrow i {
+    font-size: 2rem;
+  }
+
+  .slider .left {
+    left: 20px;
+  }
+
+  .slider .right {
+    right: 20px;
+  }
+
+  /* Radio Navogation */
+  .slider .rad-nav .rad-btn {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* VIDEO */
+.home {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.home video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* 
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.controls button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.controls button:hover {
+  background-color: #2980b9;
+} */
+
+.controls {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  z-index: 999; /* Ensure the buttons are above the video */
+}
+
+.controls button {
+  background-color: transparent; /* Remove background color */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
+}
+
+.controls button i {
+  color: white; /* Set the color to black */
+  font-size: 30px; /* Set the font size to 24 pixels */
+}
+
